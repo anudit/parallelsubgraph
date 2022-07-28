@@ -1,0 +1,24 @@
+type ParallelID @entity {
+  id: ID!
+  owner: String!
+  tokenId: BigInt!
+  mintedOn: BigInt!
+  txnHash: Bytes!
+  tokenURI: String!
+  traits: [String!]!
+  subjectType: BigInt!
+  isSanctionSafe: Boolean!
+  metadata: Metadata @derivedFrom(field: "idPointed")
+}
+
+type Metadata @entity {
+  id: ID!
+  idPointed: ParallelID!
+  description: String
+  external_url: String
+  image: String
+  name: String
+  background_color: String
+  animation_url: String
+  attributes: [String!]
+}
